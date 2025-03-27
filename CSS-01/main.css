@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
-
-.main-header{
+.main-header {
     background-color: #0053e2;
     height: 90px;
     padding: 20px 60px;
@@ -13,40 +15,35 @@
     display: flex;
 }
 .brand-logo {
-    height: 40px;    
+    height: 40px;
 }
-.location{
+.location {
     height: 40px;
     background-color: #002e99;
     width: 240px;
     margin: 0 40px;
     border-radius: 20px;
-    padding: 10px ;
+    padding: 10px;
     display: flex;
 }
-.location-text{
+.location-text {
     color: aliceblue;
     margin: -6px;
-    font-family: Arial, Helvetica, sans-serif;
 }
-.location-text h2{
+.location-text h2 {
     font-size: 14px;
-    font-weight: 500;
     /* margin-bottom: 5px; */
-   
 }
-.location-text p{
+.location-text p {
     font-size: 10px;
-    font-weight: 100;
     margin-top: 5px;
-    
 }
-.hand-deliver{
+.hand-deliver {
     height: 20px;
-    margin-right: 20px;    
+    margin-right: 20px;
 }
 
-.search-bar{
+.search-bar {
     background-color: #fff;
     height: 40px;
     border-radius: 20px;
@@ -59,14 +56,53 @@
     background-color: transparent;
     border: none;
     color: #fff;
-        outline: none;
-        margin-top: -5px;
+    outline: none;
+    margin-top: -5px;
 }
-.search-button{
+.search-button {
     width: 30px;
     height: 30px;
     padding: 5px;
     background-color: blue;
     border-radius: 50%;
     cursor: pointer;
+}
+
+.cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 300px;
+}
+.cta-button {
+    cursor: pointer;
+    width: 180px;
+    height: 60px;
+    border-radius: 90px;
+    padding: 10px 30px;
+    display: flex;
+    color: aliceblue;
+}
+
+.cta-button:hover {
+    background-color: #002e99;
+}
+
+.fa-solid {
+    padding: 10px 5px;
+    font-size: 15px;
+}
+.fa-heart {
+    color: #f00;
+}
+.fa-cart-shopping {
+    color: aquamarine;
+}
+
+.signin:hover {
+    background-color: #d507fe;
+}
+.sign-in {
+    font-weight: 600;
+    font-style: italic;
 }
