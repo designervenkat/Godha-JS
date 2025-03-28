@@ -1,0 +1,62 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* div {
+    background-color: aqua;
+    padding: 50px;
+    border: 20px solid purple;
+    margin: 30px;
+    width: 200px;
+    height: 200px;
+} */
+
+/* Pseudo Classes - Selector */
+
+/* div:hover {
+    background-color: antiquewhite;
+} */
+ul li:first-child {
+    background-color: chartreuse;
+}
+ul li:nth-child(2) {
+    background-color: chocolate;
+}
+ul li:nth-child(3) {
+    background-color: blueviolet;
+}
+
+input {
+    outline: none;
+}
+input:active {
+    border-color: cadetblue;
+}
+input:focus {
+    border-color: blue;
+}
+
+/* Pseudo Elements - Create New Element */
+
+h2::before {
+    content: '👉🏻';
+}
+h2::after {
+    content: '🔹';
+}
+p::after {
+    content: '...read more';
+}
+
+.box {
+    background-color: cornsilk;
+    width: 200px;
+    height: 200px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+.box p {
+    font-size: 50px;
+}
