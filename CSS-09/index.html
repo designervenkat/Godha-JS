@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <!-- stylesheet code -->
+        <style>
+            html {
+                font-size: 15px;
+            }
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                width: 100vw;
+                height: 100vh;
+                background-color: rgb(250, 239, 225);
+            }
+
+            /* 
+            
+            PX - Pixels
+            EM - Element
+            REM - Root EM
+    
+
+
+            Absolute - Relative
+            5px - 
+            
+            
+            */
+
+            .px {
+                border: 2px solid salmon;
+                font-size: 50%;
+            }
+            .rem {
+                border: 2px solid salmon;
+                font-size: 2rem;
+            }
+            ul {
+                border: 2px solid salmon;
+                font-size: 2em;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="px">Lorem ipsum dolor sit amet. PIXEL</div>
+        <div class="rem">Lorem ipsum dolor sit amet. REM UNIT</div>
+        <div class="em">
+            <ul>
+                <li>Lorem ipsum dolor sit.</li>
+                <ul>
+                    <li>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing.
+                    </li>
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet.</li>
+                    </ul>
+                </ul>
+            </ul>
+        </div>
+    </body>
+</html>
