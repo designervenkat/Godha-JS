@@ -135,3 +135,7 @@ const highestScore = movies.reduce((acc, currMovie) => {
 })
 
 console.log(highestScore)
+
+let array = ['j', 'a', 'v', 'a', 's', 'c', 'r', 'i', 'p', 't']
+
+// output : "Awesome Javascript"
