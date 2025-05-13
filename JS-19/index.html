@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document Object Model</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 20px 0;
+                box-sizing: border-box;
+            }
+            body {
+                background-color: #0f172a;
+                color: #cbd5e1;
+                font-family: 'Courier New', Courier, monospace;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <h1 style="color: aqua" class="heading" id="title">Javascript DOM</h1>
+
+        <p id="desc">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed,
+            provident. <span style="display: none">Something Hidden</span>
+        </p>
+
+        <h2>Lorem ipsum dolor sit. One</h2>
+        <h2>Lorem ipsum dolor sit. Two</h2>
+        <h2>Lorem ipsum dolor sit. Three</h2>
+        <h2>Lorem ipsum dolor sit. Four</h2>
+        <h2>Lorem ipsum dolor sit. Five</h2> -->
+
+        <!-- this the list element -->
+
+        <!-- <ul>
+            <li class="items">lorem one</li>
+            <li class="items">lorem two</li>
+            <li class="items">lorem three</li>
+            <li class="items">lorem four</li>
+        </ul>
+
+        <input type="email" name="email" id="email" />
+        <input type="password" name="password" id="pass" /> -->
+
+        <ul class="parent">
+            <li class="day">Mon</li>
+            <li class="day">Tue</li>
+            <li class="day">Wed</li>
+        </ul>
+
+        <script>
+            // console.log(document.getElementById('email'))
+            // console.log(document.getElementsByTagName('h2'))
+            // console.log(document.getElementsByClassName('items'))
+
+            // console.log(document.querySelector('input'))
+            // console.log(document.querySelectorAll('.items'))
+            // console.log(document.querySelectorAll('.items'))
+            // console.log(document.querySelector('input[name="password"]'))
+
+            const parentEl = document.querySelector('.parent')
+
+            // console.log(parentEl)
+            // console.log(parentEl.children)
+            // console.log(parentEl.children[1])
+            // console.log(parentEl.children[1].innerHTML)
+
+            // for (let index = 0; index < parentEl.children.length; index++) {
+            //     const element = parentEl.children[index].innerHTML
+            //     console.log(element)
+            // }
+
+            // parentEl.children[2].style.color = 'Aqua'
+
+            // console.log(parentEl.firstElementChild)
+            // console.log(parentEl.lastElementChild)
+
+            const childEl = document.querySelector('.day')
+
+            // console.log(childEl)
+            // console.log(childEl.parentElement)
+            // console.log(childEl.nextElementSibling)
+
+            // console.log('Nodes El : ', parentEl.childNodes)
+
+            // Create Element
+
+            const divEl = document.createElement('div')
+            // console.log(divEl)
+
+            divEl.className = 'title'
+            divEl.id = Math.round(Math.random() * 10 + 1)
+
+            divEl.setAttribute('title', 'Awesome Heading')
+            divEl.style.color = 'aqua'
+            divEl.style.fontSize = '42px'
+
+            // divEl.innerText = 'Hello Javascript!' // costly operation
+
+            const addText = document.createTextNode('Awesome Javascript')
+            divEl.appendChild(addText)
+
+            // document.body.appendChild(divEl)
+
+            // Edit / Replace
+            const day = document.querySelector('li:nth-child(2)')
+            console.log(day)
+
+            const newDay = document.createElement('li')
+            newDay.textContent = 'Thursday'
+            // day.replaceWith(newDay)
+
+            const firstEl = document.querySelector('li:first-child')
+            firstEl.outerHTML = '<li> Javascript </li>'
+
+            // Adding Element
+            parentEl.appendChild(newDay)
+
+            const heading = document.createElement('h1')
+            heading.textContent = 'This is Javascript'
+
+            document.body.appendChild(heading)
+
+            // Remove
+            // heading.remove()
+
+            const removeLast = document.querySelector('li:last-child')
+            console.log(removeLast)
+
+            // removeLast.remove()
+        </script>
+    </body>
+</html>

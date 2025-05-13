@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document Object Model</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 20px 0;
+                box-sizing: border-box;
+            }
+            body {
+                background-color: #0f172a;
+                color: #cbd5e1;
+                font-family: 'Courier New', Courier, monospace;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 style="color: aqua" class="heading" id="title">Javascript DOM</h1>
+        <ul class="framework">
+            <li>React</li>
+        </ul>
+
+        <script>
+            const framework = document.querySelector('.framework')
+            function addFramwork(lang) {
+                const liEl = document.createElement('li')
+                liEl.className = `${lang}`
+                liEl.innerHTML = `${lang}`
+                framework.appendChild(liEl)
+            }
+
+            function optimisedFramework(lang) {
+                const liEl = document.createElement('li')
+                liEl.appendChild(document.createTextNode(lang))
+                document.querySelector('.framework').appendChild(liEl)
+            }
+
+            addFramwork('NextJS')
+            addFramwork('VueJS')
+        </script>
+    </body>
+</html>
