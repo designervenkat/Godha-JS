@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Events</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 20px 55px;
+                box-sizing: border-box;
+            }
+            body {
+                background-color: #0f172a;
+                color: #cbd5e1;
+                font-family: 'Courier New', Courier, monospace;
+            }
+            button {
+                width: 250px;
+                height: 60px;
+            }
+            #course li {
+                background-color: #cbd5e1;
+                color: #0f172a;
+                list-style: none;
+                cursor: pointer;
+                padding: 15px 0;
+            }
+            #course li p {
+                background-color: rgb(126, 255, 212);
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Events and Propagation</h2>
+
+        <div>
+            <ul id="course">
+                <li><p>HTML</p></li>
+                <li><p>CSS</p></li>
+                <li><p>Javascript</p></li>
+                <li><p>Typescript</p></li>
+                <li><p>React</p></li>
+                <li><a href="https://www.google.com/">Google</a></li>
+            </ul>
+        </div>
+
+        <script>
+            const course = document.getElementById('course')
+
+            course.addEventListener('click', (e) => {
+                e.preventDefault()
+
+                // console.log(e)
+                console.log(e.target.tagName)
+                console.log(e.target.parentNode)
+
+                // if (e.target.tagName === 'P') {
+                let removeEl = e.target.parentNode
+                removeEl.remove()
+                // }
+            })
+        </script>
+
+        <!-- <div id="parent">
+            <div id="child">
+                <button id="btn">Click</button>
+            </div>
+        </div> -->
+
+        <!-- Mouse Events -->
+        <!-- <h2>Mouse Events</h2>
+        <ul>
+            <li>Click</li>
+            <li>Double Click</li>
+            <li>Mouseover</li>
+            <li>Mouseout</li>
+        </ul> -->
+
+        <!-- Keyboard Events -->
+        <!-- <h2>Mouse Events</h2>
+        <ul>
+            <li>Keydown</li>
+            <li>Keydown Up</li>
+            <li>keypress</li>
+        </ul> -->
+
+        <!-- Form Events -->
+        <!-- <h2>Form Events</h2>
+        <ul>
+            <li>Submit</li>
+            <li>Change</li>
+            <li>Focus</li>
+            <li>Blur</li>
+        </ul> -->
+
+        <!-- Window Events -->
+        <!-- <h2>Window Events</h2>
+        <ul>
+            <li>Load</li>
+            <li>resize</li>
+            <li>scroll</li>
+        </ul> -->
+
+        <script>
+            // document.getElementById('something').onclick = function () {
+            //     console.log('Clicked', Math.random())
+            // }
+
+            // addEventListner accepts = type of event | function | capture (boolean type )
+
+            // const buttonEL = document.getElementById('something')
+            // buttonEL.addEventListener(
+            //     'click',
+            //     () => {
+            //         console.log('Clicked ', Date.now())
+            //     },
+            //     false
+            // )
+            // buttonEL.addEventListener(
+            //     'click',
+            //     () => {
+            //         console.log('Clicked Twice ', Date.now())
+            //     },
+            //     false
+            // )
+
+            // Event Propagation -
+
+            // Event Type Bubbling - || Default false
+            // Event Type Capturing - || true
+
+            // const parentEl = document.getElementById('parent')
+            // const childEl = document.getElementById('child')
+            // const btnEl = document.getElementById('btn')
+
+            // parentEl.addEventListener(
+            //     'click',
+            //     (event) => {
+            //         console.log('Event clicked from parent element')
+            //         event.stopPropagation()
+            //     },
+            //     false
+            // )
+
+            // childEl.addEventListener(
+            //     'click',
+            //     (event) => {
+            //         console.log('Event clicked from child element')
+            //         event.stopPropagation()
+            //     },
+            //     false
+            // )
+
+            // btnEl.addEventListener(
+            //     'click',
+            //     (event) => {
+            //         console.log('Event clicked button element')
+            //         event.stopPropagation()
+            //     },
+            //     false
+            // )
+
+            // Events
+
+            // types, timestamp, defaultprevented
+            // target, toelement, srcEl, currentTarget
+            // clientx, clienty, screenx, screeny
+            // altkey, ctrlkey, shiftkey, keycode
+
+            // parentEl.addEventListener('click', (e) => {
+            //     console.log(e)
+            // })
+        </script>
+    </body>
+</html>
