@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Project 01</title>
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                font-family: 'Roboto', sans-serif;
+                font-optical-sizing: auto;
+            }
+            .canvas {
+                display: grid;
+                place-content: center;
+                width: 100vw;
+                height: 100vh;
+                background-color: #e2e0df;
+            }
+            .container {
+                display: flex;
+                gap: 10px;
+            }
+            .button {
+                height: 100px;
+                width: 100px;
+                border: 1px solid orange;
+                margin: 30px 0;
+                cursor: pointer;
+            }
+
+            #grey {
+                background-color: grey;
+            }
+            #white {
+                background-color: white;
+            }
+            #blue {
+                background-color: blue;
+            }
+            #yellow {
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="canvas">
+            <h1>Color Scheme Switcher</h1>
+
+            <div class="container">
+                <div class="button" id="grey"></div>
+                <div class="button" id="white"></div>
+                <div class="button" id="blue"></div>
+                <div class="button" id="yellow"></div>
+            </div>
+        </div>
+
+        <script>
+            const canvasEl = document.querySelector('.canvas')
+            const btnEl = document.querySelectorAll('.button')
+
+            // console.log(btnEl)
+
+            btnEl.forEach((btn) => {
+                // console.log(btn)
+                btn.addEventListener('click', (e) => {
+                    // console.log(e.target.id)
+
+                    if (e.target.id === 'grey') {
+                        canvasEl.style.backgroundColor = e.target.id
+                    }
+                    if (e.target.id === 'white') {
+                        canvasEl.style.backgroundColor = e.target.id
+                    }
+                    if (e.target.id === 'blue') {
+                        canvasEl.style.backgroundColor = e.target.id
+                    }
+                    if (e.target.id === 'yellow') {
+                        canvasEl.style.backgroundColor = e.target.id
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>
