@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Random Quote Generator</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                font-family: 'Roboto', sans-serif;
+                font-optical-sizing: auto;
+            }
+            .canvas {
+                display: grid;
+                place-content: center;
+                width: 100vw;
+                height: 100vh;
+                background-color: #f1fdff;
+            }
+            .container {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                max-width: 720px;
+                align-items: center;
+                justify-content: center;
+            }
+            .btn-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 400px;
+                gap: 10px;
+            }
+            .btn-container button {
+                width: 200px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgb(255, 226, 189);
+                border: none;
+            }
+        </style>
+    </head>
+    <body class="canvas">
+        <div class="container">
+            <!-- Project 4 - code -->
+            <div class="key">Rock Paper Scissors</div>
+
+            <h3 class="result">Result</h3>
+
+            <div class="btn-container">
+                <button id="rock">Rock</button>
+                <button id="paper">Paper</button>
+                <button id="scissor">Scissors</button>
+            </div>
+        </div>
+
+        <script>
+            const resultEl = document.querySelector('.result')
+            const rockBtn = document.querySelector('#rock')
+            const paperBtn = document.querySelector('#paper')
+            const scissorBtn = document.querySelector('#scissor')
+
+            rockBtn.addEventListener('click', () => game('rock'))
+            paperBtn.addEventListener('click', () => game('paper'))
+            scissorBtn.addEventListener('click', () => game('scissor'))
+
+            function game(userchoose) {
+                const choices = ['rock', 'paper', 'scissors']
+                const computerPlayer =
+                    choices[Math.floor(Math.random() * choices.length)]
+                // console.log('Computer Selected : ', computerPlayer)
+
+                if (userchoose === computerPlayer) {
+                    resultEl.textContent = "It's a tie! ☹️"
+                } else if (
+                    (userchoose === 'rock' && computerPlayer === 'scissors') ||
+                    (userchoose === 'paper' && computerPlayer === 'rock') ||
+                    (userchoose === 'scissors' && computerPlayer === 'paper')
+                ) {
+                    resultEl.textContent = 'You won the match 🎉'
+                } else {
+                    resultEl.textContent = 'Computer won!'
+                }
+
+                console.log(`
+                    'result :' ${resultEl.textContent}
+                    'user choice :' ${userchoose}
+                    'computer choice :' ${computerPlayer}
+                `)
+            }
+
+            // function game(userchoose) {
+            //     const choices = ['rock', 'paper', 'scissors'] // Fixed spelling
+            //     const computerPlayer =
+            //         choices[Math.floor(Math.random() * choices.length)]
+
+            //     if (userchoose === computerPlayer) {
+            //         resultEl.textContent = "It's a tie! ☹️"
+            //     } else if (
+            //         (userchoose === 'rock' && computerPlayer === 'scissors') ||
+            //         (userchoose === 'paper' && computerPlayer === 'rock') ||
+            //         (userchoose === 'scissors' && computerPlayer === 'paper')
+            //     ) {
+            //         resultEl.textContent = 'You won the match 🎉'
+            //     } else {
+            //         resultEl.textContent = 'Computer won!'
+            //     }
+
+            //     console.log(
+            //         `result: ${resultEl.textContent}, user choice: ${userchoose}, computer choice: ${computerPlayer}`
+            //     )
+            // }
+        </script>
+    </body>
+</html>
