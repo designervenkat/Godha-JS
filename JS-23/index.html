@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TODO List</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                font-family: 'Roboto', sans-serif;
+                font-optical-sizing: auto;
+            }
+            .canvas {
+                display: grid;
+                place-content: center;
+                width: 100vw;
+                height: 100vh;
+                background-color: #f1fdff;
+            }
+            .container {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                max-width: 720px;
+                align-items: center;
+                justify-content: center;
+            }
+            .btn-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 400px;
+                gap: 10px;
+            }
+            .btn-container button {
+                width: 200px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgb(255, 226, 189);
+                border: none;
+            }
+            #todo-form {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 10px;
+            }
+            input {
+                width: 300px;
+                height: 40px;
+                padding: 5px;
+                font-size: 14px;
+            }
+            button {
+                width: 300px;
+                height: 40px;
+                padding: 5px;
+                font-size: 14px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #task-list li {
+                display: flex;
+                gap: 20px;
+                list-style: none;
+                justify-content: justify-between;
+                align-items: center;
+            }
+            button.complete,
+            button.delete {
+                width: 40px;
+                height: 40px;
+                font-size: 14px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="canvas">
+            <div class="container">
+                <h2>To-Do Items</h2>
+                <form id="todo-form">
+                    <input
+                        type="text"
+                        id="task"
+                        placeholder="Please enter your task"
+                    />
+                    <button type="submit">Add Task</button>
+                </form>
+                <ul id="task-list"></ul>
+            </div>
+        </div>
+
+        <script>
+            const formEl = document.querySelector('#todo-form')
+            const inputEl = document.querySelector('#task')
+            const taskListEl = document.querySelector('#task-list')
+
+            // Add Task
+            // Clear the Input after submit
+            // Complete Task
+            // Remove Task
+
+            // Update Task - Pending
+
+            formEl.addEventListener('submit', (e) => {
+                e.preventDefault()
+                // console.log(e)
+
+                const taskText = inputEl.value.trim()
+                if (taskText === '') return
+
+                const li = document.createElement('li')
+                li.innerHTML = `
+
+                    <span>${taskText}</span>
+                    <button class="complete">✅</button>
+                    <button class="delete">❌</button>
+                
+                `
+                taskListEl.append(li)
+                inputEl.value = ''
+
+                // li.querySelector('.complete').addEventListener('click', () => {
+                //     li.querySelector('span').style.color = 'green'
+                // })
+
+                // li.querySelector('.delete').addEventListener('click', () => {
+                //     li.remove()
+                // })
+            })
+
+            taskListEl.addEventListener('click', (e) => {
+                const target = e.target
+
+                // complete
+                // console.log(target)
+                if (target.classList.contains('complete')) {
+                    target.previousElementSibling.style.color = 'green'
+                }
+                // delete
+                // console.log(target)
+                if (target.classList.contains('delete')) {
+                    target.parentElement.remove()
+                }
+            })
+        </script>
+    </body>
+</html>
