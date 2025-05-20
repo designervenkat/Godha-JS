@@ -113,6 +113,37 @@
 
             // Update Task - Pending
 
+            // load tasks from localStorage
+            function loadTasks() {
+                const tasks = JSON.parse(localStorage.getItem('tasks')) || []
+                taskListEl.innerHTML = ''
+                tasks.forEach((item) => {
+                    addTaskToLi(item)
+                })
+            }
+
+            // Add Task Logic
+            function addTaskToLi(taskText) {
+                const li = document.createElement('li')
+                li.innerHTML = `
+
+                    <span>${taskText}</span>
+                    <button class="complete">✅</button>
+                    <button class="delete">❌</button>
+
+                `
+                taskListEl.append(li)
+                inputEl.value = ''
+            }
+
+            // Save task to localStorage
+            function saveTasks() {
+                const tasks = Array.from(taskListEl.children).map(
+                    (li) => li.querySelector('span').textContent
+                )
+                localStorage.setItem('tasks', JSON.stringify(tasks))
+            }
+
             formEl.addEventListener('submit', (e) => {
                 e.preventDefault()
                 // console.log(e)
@@ -120,24 +151,8 @@
                 const taskText = inputEl.value.trim()
                 if (taskText === '') return
 
-                const li = document.createElement('li')
-                li.innerHTML = `
-
-                    <span>${taskText}</span>
-                    <button class="complete">✅</button>
-                    <button class="delete">❌</button>
-                
-                `
-                taskListEl.append(li)
-                inputEl.value = ''
-
-                // li.querySelector('.complete').addEventListener('click', () => {
-                //     li.querySelector('span').style.color = 'green'
-                // })
-
-                // li.querySelector('.delete').addEventListener('click', () => {
-                //     li.remove()
-                // })
+                addTaskToLi(taskText)
+                saveTasks()
             })
 
             taskListEl.addEventListener('click', (e) => {
@@ -152,8 +167,11 @@
                 // console.log(target)
                 if (target.classList.contains('delete')) {
                     target.parentElement.remove()
+                    saveTasks()
                 }
             })
+
+            loadTasks()
         </script>
     </body>
 </html>
