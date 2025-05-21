@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Delayed Message Display</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                font-family: 'Roboto', sans-serif;
+                font-optical-sizing: auto;
+            }
+            .canvas {
+                display: grid;
+                place-content: center;
+                width: 100vw;
+                height: 100vh;
+                background-color: #f1fdff;
+                transition: background-color ease-in-out 1s;
+            }
+            .container {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                max-width: 720px;
+                align-items: center;
+                justify-content: center;
+            }
+            h2 {
+                font-size: 18px;
+                color: rgb(84, 84, 84);
+                font-weight: 400;
+            }
+            .btn-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 400px;
+                gap: 10px;
+            }
+            .btn-container button {
+                width: 200px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgb(255, 226, 189);
+                border: none;
+            }
+            button {
+                width: 300px;
+                height: 40px;
+                padding: 5px;
+                font-size: 14px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="canvas">
+            <div class="container">
+                <h2>Every Second Need To Change Background Color</h2>
+                <button id="start">Start</button>
+                <button id="stop">Stop</button>
+            </div>
+        </div>
+
+        <script>
+            const canvasEl = document.querySelector('.canvas')
+            const startBtn = document.querySelector('#start')
+            const stopBtn = document.querySelector('#stop')
+
+            // random color generate
+            // HEX code  0 to 9 and A to F #FFFFFF #F00000
+
+            const randomColor = () => {
+                const hex = '0123456789ABCDEF'
+                let color = '#'
+
+                for (let i = 0; i < 6; i++) {
+                    color += hex[Math.floor(Math.random() * 16)]
+                }
+                return color
+            }
+
+            let interval // global scope
+            const startChangeColor = () => {
+                if (!interval) {
+                    interval = setInterval(changeColor, 1000)
+                }
+
+                function changeColor() {
+                    canvasEl.style.backgroundColor = randomColor()
+                }
+            }
+            const stopChangeColor = () => {
+                clearInterval(interval)
+                interval = null
+            }
+
+            startBtn.addEventListener('click', startChangeColor)
+            stopBtn.addEventListener('click', stopChangeColor)
+        </script>
+    </body>
+</html>
