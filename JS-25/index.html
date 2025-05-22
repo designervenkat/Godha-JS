@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>XMLHttpRequest XHR</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                font-family: 'Roboto', sans-serif;
+                font-optical-sizing: auto;
+            }
+            .canvas {
+                display: grid;
+                place-content: center;
+                width: 100vw;
+                height: 100vh;
+                background-color: oklch(0.208 0.042 265.755);
+                color: oklch(0.869 0.022 252.894);
+                transition: background-color ease-in-out 1s;
+            }
+            .container {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                max-width: 720px;
+                align-items: center;
+                justify-content: center;
+            }
+            h2 {
+                font-size: 18px;
+                color: oklch(0.869 0.022 252.894);
+                font-weight: 400;
+            }
+            .btn-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 400px;
+                gap: 10px;
+            }
+            .btn-container button {
+                width: 200px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgb(255, 226, 189);
+                border: none;
+            }
+            button {
+                width: 300px;
+                height: 40px;
+                padding: 5px;
+                font-size: 14px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="canvas">
+            <div class="container">
+                <!-- <h2 id="username">Hello</h2> -->
+                <ul id="userList"></ul>
+            </div>
+        </div>
+
+        <script>
+            // const userEl = document.querySelector('#username')
+            const userList = document.querySelector('#userList')
+            // 'https://api.github.com/users/designervenkat'
+            const apiUrl = 'https://dummyjson.com/products'
+            // create a request
+            let request = new XMLHttpRequest()
+
+            // Methods : GET | POST | PUT / PATCH | DELETE
+
+            // Create - POST
+            // Update - PUT / PATCH
+            // Read - GET
+            // Delete - DELETE
+
+            request.open('GET', apiUrl)
+
+            request.onreadystatechange = () => {
+                // console.log(request.readyState)
+                if (request.readyState === 4 && request.status === 200) {
+                    // console.log(request)
+                    // console.log(request.status)
+                    // console.log(request.statusText)
+                    // console.log(request.responseText)
+                    const data = JSON.parse(request.responseText)
+
+                    console.log(data)
+
+                    data.products.map((user) => {
+                        let li = document.createElement('li')
+                        li.innerHTML = `
+                        <img src='${user.images[0]}' />
+                        <p>${user.title} - ${user.price}</p>
+                        `
+                        userList.appendChild(li)
+                    })
+
+                    // data.forEach((element) => {
+                    //     console.log(element)
+                    // })
+
+                    // userEl.innerHTML = `Hello ${data.name}`
+                }
+            }
+
+            request.send()
+        </script>
+    </body>
+</html>
