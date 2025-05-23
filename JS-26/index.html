@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>XMLHttpRequest XHR</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                font-family: 'Roboto', sans-serif;
+                font-optical-sizing: auto;
+            }
+            .canvas {
+                display: grid;
+                place-content: center;
+                width: 100vw;
+                height: 100vh;
+                background-color: oklch(0.208 0.042 265.755);
+                color: oklch(0.869 0.022 252.894);
+                transition: background-color ease-in-out 1s;
+            }
+            .container {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                max-width: 720px;
+                align-items: center;
+                justify-content: center;
+            }
+            h2 {
+                font-size: 18px;
+                color: oklch(0.869 0.022 252.894);
+                font-weight: 400;
+            }
+            .btn-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 400px;
+                gap: 10px;
+            }
+            .btn-container button {
+                width: 200px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgb(255, 226, 189);
+                border: none;
+            }
+            button {
+                width: 300px;
+                height: 40px;
+                padding: 5px;
+                font-size: 14px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="canvas">
+            <div class="container">
+                <h2>XHR Request</h2>
+            </div>
+        </div>
+
+        <script>
+            const xhr = new XMLHttpRequest()
+            const url = 'https://68308de86205ab0d6c398d43.mockapi.io'
+
+            // GET Request
+            xhr.open('GET', `${url}/todo/7`)
+            xhr.onload = () => {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    console.log('Response', JSON.parse(xhr.responseText))
+                } else {
+                    // 300 or 400 // Network request was successfull but we didn't get anything
+                    console.error('Error', xhr.status)
+                }
+            }
+
+            // POST - PUT - PATCH
+            // xhr.open('POST', `${url}/todo`)
+
+            // // set request headers (optional)
+            // xhr.setRequestHeader('Content-Type', 'application/json')
+
+            // // setup the reponse handler
+
+            // xhr.onload = () => {
+            //     if (xhr.status >= 200 && xhr.status < 300) {
+            //         console.log('Response', JSON.parse(xhr.responseText))
+            //     } else {
+            //         // 300 or 400 // Network request was successfull but we didn't get anything
+            //         console.error('Error', xhr.status)
+            //     }
+            // }
+
+            // // if anything related to network or server error
+            // xhr.onerror = () => {
+            //     console.error('Error :', xhr.status)
+            // }
+
+            // Send the data
+            // const data = JSON.stringify({
+            //     name: 'Berry Alen',
+            //     id: 14,
+            // })
+
+            // xhr.open('DELETE', `${url}/posts/1`)
+
+            // // custom headers
+            // xhr.setRequestHeader('Content-Type', 'application/json')
+            // xhr.setRequestHeader('Accept', 'application/json')
+            // xhr.setRequestHeader('Authorization', 'Bearer-{TOKEN}')
+
+            // xhr.onload = () => {
+            //     if (xhr.status >= 200 && xhr.status < 300) {
+            //         console.log('Data Delete Successfully')
+            //     } else {
+            //         // 300 or 400 // Network request was successfull but we didn't get anything
+            //         console.error('Error', xhr.status)
+            //     }
+            // }
+
+            // Send request
+            xhr.send()
+        </script>
+    </body>
+</html>
+
+<!-- https://68308de86205ab0d6c398d43.mockapi.io/todo -->
