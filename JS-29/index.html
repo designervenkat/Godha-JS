@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Fetch Methods</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Inter', sans-serif;
+                font-weight: 500;
+            }
+            .container {
+                display: grid;
+                place-content: center;
+                width: 100vw;
+                height: 100vh;
+                background-color: #242424;
+                color: #f1f1f1;
+            }
+            #product-details {
+                width: 720px;
+                height: auto;
+            }
+            #product-details h2 {
+                margin: 30px auto;
+            }
+            #product-info {
+                margin: 30px auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+            }
+            button {
+                width: 220px;
+                height: 50px;
+                background-color: #515151;
+                color: #f1f1f1;
+            }
+            .products {
+                margin: 30px auto;
+                width: 100%;
+                height: 60px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div id="products-container">
+                <h2>Products</h2>
+            </div>
+
+            <button id="delete">Delete Product</button>
+
+            <div id="product-details" style="display: none">
+                <h2>Product Details</h2>
+                <p id="product-info"></p>
+                <button onclick="goBack()">Back to Products</button>
+                <button onclick="deleteProduct()">Delete Product</button>
+                <button onclick="updateProduct()">Update Product</button>
+            </div>
+        </div>
+
+        <script>
+            const apiUrl =
+                'https://68351b82cd78db2058c04649.mockapi.io/products'
+
+            const productsContainerEl = document.querySelector(
+                '#products-container'
+            )
+
+            const productsDetailsEl = document.querySelector('#product-details')
+
+            const productsInfoEl = document.querySelector('#product-info')
+            const deleteEl = document.querySelector('#delete')
+
+            const headers = new Headers()
+            headers.append('Content-Type', 'application/json')
+            headers.append('Authorization', 'Token')
+
+            // GET: Fetch all products
+            async function getAllProducts() {
+                const response = await fetch(apiUrl)
+                const products = await response.json()
+                products.forEach((product) => {
+                    console.log(product)
+
+                    const divEl = document.createElement('div')
+                    divEl.className = 'products'
+                    divEl.innerHTML = `
+                        <h3> ${product.id} - ${product.title} - ${product.price} </h3>
+                    `
+
+                    productsContainerEl.appendChild(divEl)
+                })
+            }
+
+            // POST: Create New Product
+            async function addProduct() {
+                const newProduct = {
+                    name: 'iPhone 26',
+                    price: '19.00',
+                }
+                await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newProduct),
+                })
+                getAllProducts()
+            }
+
+            // Get Back to Product List
+            function goBack() {
+                productsContainerEl.style.display = 'flex'
+                productsDetailsEl.style.display = 'none'
+            }
+
+            getAllProducts()
+
+            // DELETE METHOD
+            async function deleteProduct() {
+                await fetch(`${apiUrl}/2`, {
+                    method: 'DELETE',
+                })
+                getAllProducts()
+            }
+
+            deleteEl.addEventListener('click', deleteProduct)
+        </script>
+    </body>
+</html>
+
+<!-- 
+// Setting Headers
+
+
+const header = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer-eyJhbGciOiJIUzI1NiIsInR5cCI6I',
+}
+            
+const bodyData = JSON.stringify({
+    id: 14,
+    title: 'Apple Macbook Series',
+    desc: 'Something related to apple products',
+})
+
+const reqOptions = {
+    method: 'POST',
+    header,
+    body: bodyData,
+}
+
+// GET
+fetch(apiUrl, reqOptions) -->
